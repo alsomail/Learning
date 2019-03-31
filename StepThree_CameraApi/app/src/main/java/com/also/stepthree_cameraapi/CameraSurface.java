@@ -1,6 +1,8 @@
 package com.also.stepthree_cameraapi;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Surface;
@@ -13,9 +15,8 @@ import android.view.SurfaceView;
  * 邮箱：ye.yuan@lingware.cn
  * 创建时间：2019/3/24 2:30 PM
  */
-public class CameraSurface extends SurfaceView implements SurfaceHolder.Callback{
+public class CameraSurface extends SurfaceView {
     private Context mContext;
-    private SurfaceHolder mSurfaceHolder;
 
     public CameraSurface(Context context) {
         super(context);
@@ -39,26 +40,7 @@ public class CameraSurface extends SurfaceView implements SurfaceHolder.Callback
 
     private void init(Context context) {
         mContext = context;
-        mSurfaceHolder = getHolder();
-        mSurfaceHolder.addCallback(this);
     }
 
-    public SurfaceHolder getSurfaceHolder() {
-        return mSurfaceHolder;
-    }
 
-    @Override
-    public void surfaceCreated(SurfaceHolder holder) {
-
-    }
-
-    @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
-    }
-
-    @Override
-    public void surfaceDestroyed(SurfaceHolder holder) {
-
-    }
 }

@@ -82,10 +82,7 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
                 try {
-                    Log.i(TAG, "设置的预览尺寸：" + mCameraSurfaceView.getWidth() + " x "
-                            + mCameraSurfaceView.getHeight());
-                    mCameraSurfaceView.getHolder().setFixedSize(mCameraSurfaceView.getHeight(),
-                            mCameraSurfaceView.getWidth());
+
                     createCameraPreviewSession(mCameraSurfaceView.getHolder().getSurface());
                 } catch (CameraAccessException e) {
                     e.printStackTrace();
@@ -137,6 +134,11 @@ public class MainActivity extends AppCompatActivity{
             Size[] outputSizes = map.getOutputSizes(SurfaceHolder.class);
             Log.i(TAG, "支持的预览尺寸:" + Arrays.toString(outputSizes));
 
+            Log.i(TAG, "设置的预览尺寸：" + mCameraSurfaceView.getWidth() + " x "
+                    + mCameraSurfaceView.getHeight());
+            //比例的设置要在创建surface之前，不然无效，setFixed到surface的过程待查看
+            mCameraSurfaceView.getHolder().setFixedSize(2160,
+                    1080);
             Boolean aBoolean = characteristics.get(CameraCharacteristics.FLASH_INFO_AVAILABLE);
             mFlashAvailable = aBoolean == null ? false : aBoolean;
 
